@@ -42,7 +42,7 @@ const Center = styled.div`
   text-align: center;
 `;
 
-const Logo = styled.div`
+const Logo = styled.h1`
   font-weight: bold;
 `;
 
