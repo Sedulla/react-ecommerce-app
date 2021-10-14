@@ -71,7 +71,7 @@ const Nav = () => {
           </SearchContainer>
         </Left>
         <Center>
-          <Logo>ATL.</Logo>
+          <Logo>Logo.</Logo>
         </Center>
         <Right>
           <MenuItem>REGISTER</MenuItem>
