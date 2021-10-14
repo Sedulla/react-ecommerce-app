@@ -1,9 +1,10 @@
 import Home from './pages/Home';
-// import Login from './pages/Login';
-// import Register from './pages/Register';
+import Product from './pages/ProductPage';
+import Login from './pages/Login';
+import Register from './pages/Register';
 
 function App() {
-  return <Home />;
+  return <App />;
 }
 
 export default App;
