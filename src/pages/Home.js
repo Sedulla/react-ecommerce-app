@@ -1,12 +1,14 @@
 import React from 'react';
-import Navbar from '../components/Navbar';
+import Nav from '../components/Nav';
 import Slider from '../components/Slider';
 import Products from '../components/Products';
+import Announcement from '../components/Announcement';
 
 const Home = () => {
   return (
     <div>
-      <Navbar />
+      <Announcement />
+      <Nav />
       <Slider />
       <Products />
     </div>

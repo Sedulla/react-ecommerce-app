@@ -26,7 +26,7 @@ const Language = styled.span`
 `;
 
 const SearchContainer = styled.div`
-  border: 0.5px solid lightgray;
+  border: 0.5px solid #d3d3d3;
   display: flex;
   align-items: center;
   margin-left: 25px;
@@ -59,7 +59,7 @@ const MenuItem = styled.div`
   margin-left: 25px;
 `;
 
-const Navbar = () => {
+const Nav = () => {
   return (
     <Container>
       <Wrapper>
@@ -87,4 +87,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default Nav;
