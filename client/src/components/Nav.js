@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Search, ShoppingCartOutlined } from '@mui/icons-material';
 import { Badge } from '@mui/material';
 import React from 'react';
@@ -71,11 +72,23 @@ const Nav = () => {
           </SearchContainer>
         </Left>
         <Center>
-          <Logo>Logo.</Logo>
+          <Logo>
+            <Link className="link" to="/">
+              Logo.
+            </Link>
+          </Logo>
         </Center>
         <Right>
-          <MenuItem>REGISTER</MenuItem>
-          <MenuItem>SIGN IN</MenuItem>
+          <MenuItem>
+            <Link className="link" to="/register">
+              REGISTER
+            </Link>
+          </MenuItem>
+          <MenuItem>
+            <Link className="link" to="/login">
+              SIGN IN
+            </Link>
+          </MenuItem>
           <MenuItem>
             <Badge badgeContent={4} color="primary">
               <ShoppingCartOutlined />

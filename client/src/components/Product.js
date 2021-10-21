@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import {
   FavoriteBorderOutlined,
   SearchOutlined,
@@ -67,7 +68,9 @@ const Product = ({ product }) => {
           <ShoppingCartOutlined />
         </Icon>
         <Icon>
-          <SearchOutlined />
+          <Link className="link" to="/product">
+            <SearchOutlined />
+          </Link>
         </Icon>
         <Icon>
           <FavoriteBorderOutlined />
