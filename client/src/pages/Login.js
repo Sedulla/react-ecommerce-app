@@ -1,4 +1,8 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import Home from '../pages/Home';
+import { Alert } from '@mui/material';
 
 const Container = styled.div`
   width: 100vw;
@@ -42,7 +46,7 @@ const Button = styled.button`
   margin-bottom: 10px;
 `;
 
-const Link = styled.a`
+const ALink = styled.a`
   margin: 5px 0px;
   font-size: 12px;
   text-decoration: underline;
@@ -50,19 +54,63 @@ const Link = styled.a`
 `;
 
 const Login = () => {
+  const [emaillog, setEmaillog] = useState('');
+  const [passwordlog, setPasswordlog] = useState('');
+
+  const [flag, setFlag] = useState('');
+
+  const [home, setHome] = useState(true);
+
+  function handleLogin(e) {
+    e.preventDefault();
+
+    let pass = localStorage.getItem('SubmissionPassword').replace(/"/g, '');
+    let mail = localStorage.getItem('SubmissionEmail').replace(/"/g, '');
+
+    if (!emaillog || !passwordlog) {
+      setFlag(true);
+      console.log('EMPTY');
+    } else if (passwordlog !== pass || emaillog !== mail) {
+      setFlag(true);
+    } else {
+      setHome(!home);
+      setFlag(false);
+    }
+  }
+
   return (
-    <Container>
-      <Wrapper>
-        <Title>SIGN IN</Title>
-        <Form>
-          <Input placeholder="username" />
-          <Input placeholder="password" />
-          <Button>LOGIN</Button>
-          <Link>DO NOT YOU REMEMBER THE PASSWORD?</Link>
-          <Link>REGISTER HERE</Link>
-        </Form>
-      </Wrapper>
-    </Container>
+    <>
+      {home ? (
+        <Container>
+          <Wrapper>
+            <Title>SIGN IN</Title>
+
+            <Form onSubmit={handleLogin}>
+              <Input
+                type="email"
+                placeholder="email"
+                onChange={(e) => setEmaillog(e.target.value)}
+              />
+              <Input
+                type="password"
+                placeholder="password"
+                onChange={(e) => setPasswordlog(e.target.value)}
+              />
+              {flag && <Alert severity="warning">Fill correct</Alert>}
+              <Button type="submit">LOGIN</Button>
+              <ALink>DO NOT YOU REMEMBER THE PASSWORD?</ALink>
+              <ALink>
+                <Link className="link" to="/register">
+                  REGISTER HERE
+                </Link>
+              </ALink>
+            </Form>
+          </Wrapper>
+        </Container>
+      ) : (
+        <Home />
+      )}
+    </>
   );
 };
 

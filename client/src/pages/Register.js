@@ -1,4 +1,7 @@
+import { Alert } from '@mui/material';
+import { useState } from 'react';
 import styled from 'styled-components';
+import Login from './Login';
 
 const Container = styled.div`
   width: 100vw;
@@ -47,25 +50,65 @@ const Button = styled.button`
 `;
 
 const Register = () => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const [flag, setFlag] = useState(false);
+  const [login, setLogin] = useState(true);
+
+  function handleFormSubmit(e) {
+    e.preventDefault();
+
+    if (!name || !email || !password) {
+      setFlag(true);
+    } else {
+      setFlag(false);
+      localStorage.setItem('SubmissionEmail', JSON.stringify(email));
+      localStorage.setItem('SubmissionPassword', JSON.stringify(password));
+      console.log('Saved in Local Storage');
+
+      setLogin(!login);
+    }
+  }
+
   return (
-    <Container>
-      <Wrapper>
-        <Title>NEW ACCOUNT</Title>
-        <Form>
-          <Input placeholder="name"></Input>
-          <Input placeholder="last name"></Input>
-          <Input placeholder="username"></Input>
-          <Input placeholder="email"></Input>
-          <Input placeholder="password"></Input>
-          <Input placeholder="confirm password"></Input>
-          <Agreement>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates
-            quos dolores. <b>PRIVACY POLICY</b>
-          </Agreement>
-          <Button>REGISTER NOW</Button>
-        </Form>
-      </Wrapper>
-    </Container>
+    <>
+      {login ? (
+        <Container>
+          <Wrapper>
+            <Title>NEW ACCOUNT</Title>
+            <Form onSubmit={handleFormSubmit}>
+              <Input
+                type="text"
+                placeholder="name"
+                onChange={(e) => setName(e.target.value)}
+              ></Input>
+              <Input
+                type="email"
+                placeholder="email"
+                onChange={(e) => setEmail(e.target.value)}
+              ></Input>
+              <Input
+                type="password"
+                placeholder="password"
+                onChange={(e) => setPassword(e.target.value)}
+              ></Input>
+              <Agreement>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Voluptates quos dolores. <b>PRIVACY POLICY</b>
+              </Agreement>
+              {flag && (
+                <Alert severity="danger">Every Field is important!</Alert>
+              )}
+              <Button type="submit">REGISTER NOW</Button>
+            </Form>
+          </Wrapper>
+        </Container>
+      ) : (
+        <Login />
+      )}
+    </>
   );
 };
 
