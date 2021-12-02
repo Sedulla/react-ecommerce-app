@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 // import { Alert } from "@mui/material";
 import { useForm } from 'react-hook-form';
 
+const EMAIL_PATTERN = /^\S+@\S+\.\S+$/
+
 const Container = styled.div`
   width: 100vw;
   height: 100vh;
@@ -66,7 +68,7 @@ const Login = () => {
       password: '',
     },
   });
-  
+
   const onSubmit = (data) => {
     console.log(data);
     localStorage.setItem('user', JSON.stringify(data));
@@ -79,12 +81,11 @@ const Login = () => {
       <Container>
         <Wrapper>
           <Title>SIGN IN</Title>
-
           <Form onSubmit={handleSubmit(onSubmit)}>
             <Input
               {...register('email', {
                 required: true,
-                pattern: /^\S+@\S+\.\S+$/,
+                pattern: EMAIL_PATTERN,
               })}
               type="text"
               placeholder="email"
