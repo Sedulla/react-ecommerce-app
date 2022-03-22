@@ -106,7 +106,7 @@ const Button = styled.button`
   }
 `;
 
-const Product = () => {
+export const SingleProduct = () => {
   return (
     <Container>
       <Nav />
@@ -156,5 +156,3 @@ const Product = () => {
     </Container>
   );
 };
-
-export default Product;

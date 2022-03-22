@@ -1,7 +1,8 @@
-import { Alert } from '@mui/material';
 import { useState } from 'react';
 import styled from 'styled-components';
-import Login from './Login';
+import { LogIn } from './LogIn';
+
+const Alert = styled.div``
 
 const Container = styled.div`
   width: 100vw;
@@ -30,7 +31,7 @@ const Form = styled.form`
 
 const Input = styled.input`
   flex: 1;
-  min-width: 40%;
+  min-width: 40vw;
   margin: 20px 10px 0px 0px;
   padding: 10px;
 `;
@@ -41,7 +42,7 @@ const Agreement = styled.span`
 `;
 
 const Button = styled.button`
-  width: 40%;
+  width: 40vw;
   border: none;
   padding: 15px 20px;
   background-color: #008080;
@@ -49,7 +50,7 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
-const Register = () => {
+export const SignUp = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -106,10 +107,8 @@ const Register = () => {
           </Wrapper>
         </Container>
       ) : (
-        <Login />
+        <LogIn />
       )}
     </>
   );
 };
-
-export default Register;

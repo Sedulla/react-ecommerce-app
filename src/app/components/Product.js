@@ -1,15 +1,15 @@
 import { Link } from 'react-router-dom';
 import {
-  FavoriteBorderOutlined,
-  SearchOutlined,
-  ShoppingCartOutlined,
-} from '@mui/icons-material';
+  MdOutlineFavoriteBorder as FavoriteBorderIcon,
+  MdOutlineSearch as SearchIcon,
+  MdOutlineShoppingCart as ShoppingCartIcon,
+} from 'react-icons/md';
 import styled from 'styled-components';
 
 const Info = styled.div`
   opacity: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   position: absolute;
   top: 0;
   left: 0;
@@ -39,14 +39,14 @@ const Container = styled.div`
 `;
 
 const Image = styled.img`
-  height: 75%;
+  height: 75vh;
   z-index: 2;
 `;
 
 const Icon = styled.div`
   width: 40px;
   height: 40px;
-  border-radius: 50%;
+  border-radius: 25px;
   background-color: #fff;
   display: flex;
   align-items: center;
@@ -59,25 +59,23 @@ const Icon = styled.div`
   }
 `;
 
-const Product = ({ product }) => {
+export const Product = ({ product }) => {
   return (
     <Container>
       <Image src={product.image} />
       <Info>
         <Icon>
-          <ShoppingCartOutlined />
+          <ShoppingCartIcon />
         </Icon>
         <Icon>
           <Link className="link" to="/product">
-            <SearchOutlined />
+            <SearchIcon />
           </Link>
         </Icon>
         <Icon>
-          <FavoriteBorderOutlined />
+          <FavoriteBorderIcon />
         </Icon>
       </Info>
     </Container>
   );
 };
-
-export default Product;

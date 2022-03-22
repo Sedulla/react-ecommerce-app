@@ -1,8 +1,11 @@
 import { Link } from 'react-router-dom';
-import { Search, ShoppingCartOutlined } from '@mui/icons-material';
-import { Badge } from '@mui/material';
-import React from 'react';
 import styled from 'styled-components';
+import {
+  MdSearch as SearchIcon,
+  MdOutlineShoppingCart as OutlineShoppingCartIcon,
+} from 'react-icons/md';
+
+const Badge = styled.div``;
 
 const Container = styled.div`
   height: 60px;
@@ -60,7 +63,7 @@ const MenuItem = styled.div`
   margin-left: 25px;
 `;
 
-const Nav = () => {
+export const Nav = () => {
   return (
     <Container>
       <Wrapper>
@@ -68,7 +71,7 @@ const Nav = () => {
           <Language>EN</Language>
           <SearchContainer>
             <Input placeholder="Search" />
-            <Search style={{ color: 'gray', fontSize: 16 }}></Search>
+            <SearchIcon style={{ color: 'gray', fontSize: 16 }} />
           </SearchContainer>
         </Left>
         <Center>
@@ -91,7 +94,7 @@ const Nav = () => {
           </MenuItem>
           <MenuItem>
             <Badge badgeContent={4} color="primary">
-              <ShoppingCartOutlined />
+              <OutlineShoppingCartIcon />
             </Badge>
           </MenuItem>
         </Right>
@@ -99,5 +102,3 @@ const Nav = () => {
     </Container>
   );
 };
-
-export default Nav;

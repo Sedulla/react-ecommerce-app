@@ -1,10 +1,14 @@
-import { ArrowLeftOutlined, ArrowRightOutlined } from '@mui/icons-material';
 import { useState } from 'react';
+import {
+  MdOutlineKeyboardArrowLeft as LeftIcon,
+  MdOutlineKeyboardArrowRight as RightIcon,
+} from 'react-icons/md';
+
 import styled from 'styled-components';
-import { slideItems } from '../data/data';
+import { slideItems } from '../utils/data';
 
 const Container = styled.div`
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   display: flex;
   position: relative;
@@ -15,7 +19,7 @@ const Arrow = styled.div`
   width: 50px;
   height: 50px;
   background-color: #fff7f7;
-  border-radius: 50%;
+  border-radius: 25px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -31,7 +35,7 @@ const Arrow = styled.div`
 `;
 
 const Wrapper = styled.div`
-  height: 100%;
+  height: 100vh;
   display: flex;
   transition: all 1.5s ease;
   transform: translateX(${(props) => props.slideIndex * -100}vw);
@@ -46,12 +50,12 @@ const Slide = styled.div`
 `;
 
 const ImgContainer = styled.div`
-  height: 100%;
+  height: 100vh;
   flex: 1;
 `;
 
 const Image = styled.img`
-  height: 80%;
+  height: 80vh;
 `;
 
 const InfoContainer = styled.div`
@@ -77,7 +81,7 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
-const Slider = () => {
+export const Slider = () => {
   const [slideIndex, setSlideIndex] = useState(0);
 
   const handleClick = (direction) => {
@@ -90,7 +94,7 @@ const Slider = () => {
   return (
     <Container>
       <Arrow direction="left" onClick={() => handleClick('left')}>
-        <ArrowLeftOutlined />
+        <LeftIcon />
       </Arrow>
       <Wrapper slideIndex={slideIndex}>
         {slideItems.map((item) => (
@@ -107,10 +111,8 @@ const Slider = () => {
         ))}
       </Wrapper>
       <Arrow direction="right" onClick={() => handleClick('right')}>
-        <ArrowRightOutlined />
+        <RightIcon />
       </Arrow>
     </Container>
   );
 };
-
-export default Slider;

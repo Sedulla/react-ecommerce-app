@@ -1,25 +1,19 @@
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Home from './pages/Home';
+import { Routes, Route } from 'react-router-dom';
+import { Homepage } from './app/views/Homepage';
 // import Product from './pages/ProductPage';
-import Login from './pages/Login';
-import Register from './pages/Register';
+import { LogIn } from './app/views/LogIn';
+import { SignUp } from './app/views/SignUp';
 // import ProtectedRoute from './pages/ProtectedRoute';
 
-function App({ children, isAuthenticated, ...rest }) {
+export const App = () => {
   return (
-    <Router>
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/register" component={Register} />
-        {/* <ProtectedRoute
-          exact
-          path="/product"
-          component={Product}
-        ></ProtectedRoute> */}
-      </Switch>
-    </Router>
+    <>
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/login" element={<LogIn />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="*" />
+      </Routes>
+    </>
   );
-}
-
-export default App;
+};

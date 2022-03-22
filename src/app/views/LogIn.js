@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 // import { Alert } from "@mui/material";
 import { useForm } from 'react-hook-form';
 
-const EMAIL_PATTERN = /^\S+@\S+\.\S+$/
+const EMAIL_PATTERN = /^\S+@\S+\.\S+$/;
 
 const Container = styled.div`
   width: 100vw;
@@ -17,7 +17,7 @@ const Container = styled.div`
 `;
 
 const Wrapper = styled.div`
-  width: 25%;
+  width: 25vw;
   padding: 20px;
   background-color: #fff;
 `;
@@ -34,7 +34,7 @@ const Form = styled.form`
 
 const Input = styled.input`
   flex: 1;
-  min-width: 40%;
+  min-width: 40vw;
   margin: 10px 0;
   padding: 10px;
 `;
@@ -56,7 +56,7 @@ const ALink = styled.a`
   cursor: pointer;
 `;
 
-const Login = () => {
+export const LogIn = () => {
   const {
     register,
     handleSubmit,
@@ -72,7 +72,7 @@ const Login = () => {
   const onSubmit = (data) => {
     console.log(data);
     localStorage.setItem('user', JSON.stringify(data));
-    window.location.href = "/product";
+    window.location.href = '/product';
     // reset()
   };
 
@@ -120,5 +120,3 @@ const Login = () => {
     </>
   );
 };
-
-export default Login;

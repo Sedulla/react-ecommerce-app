@@ -1,13 +1,14 @@
-import {
-  Facebook,
-  Instagram,
-  MailOutline,
-  Phone,
-  Pinterest,
-  Room,
-  Twitter,
-} from '@mui/icons-material';
 import styled from 'styled-components';
+import {
+  MdFacebook as FacebookIcon,
+  MdMailOutline as MailOutlineIcon,
+  MdPhone as PhoneIcon,
+  MdRoom as RoomIcon,
+} from 'react-icons/md';
+import {
+  FaInstagram as InstagramIcon,
+  FaTwitter as TwitterIcon,
+} from 'react-icons/fa';
 
 const Container = styled.div`
   display: flex;
@@ -60,7 +61,7 @@ const List = styled.ul`
 `;
 
 const ListItem = styled.li`
-  width: 50%;
+  width: 50px; /* fix this */
   margin-bottom: 10px;
 `;
 
@@ -75,7 +76,7 @@ const ContactItem = styled.div`
   align-items: center;
 `;
 
-const Footer = () => {
+export const Footer = () => {
   return (
     <Container>
       <Left>
@@ -88,16 +89,13 @@ const Footer = () => {
         </Desc>
         <SocialContainer>
           <SocialIcon color="3b5999">
-            <Facebook />
+            <FacebookIcon />
           </SocialIcon>
           <SocialIcon color="e4405f">
-            <Instagram />
+            <InstagramIcon />
           </SocialIcon>
           <SocialIcon color="55acee">
-            <Twitter />
-          </SocialIcon>
-          <SocialIcon color="e60023">
-            <Pinterest />
+            <TwitterIcon />
           </SocialIcon>
         </SocialContainer>
       </Left>
@@ -119,20 +117,18 @@ const Footer = () => {
       <Right>
         <Title>Contact</Title>
         <ContactItem>
-          <Room style={{ marginRight: '10px' }} />
+          <RoomIcon style={{ marginRight: '10px' }} />
           622 Dixie Path, South Tobinchester 98336
         </ContactItem>
         <ContactItem>
-          <Phone style={{ marginRight: '10px' }} />
+          <PhoneIcon style={{ marginRight: '10px' }} />
           +1 234 56 78
         </ContactItem>
         <ContactItem>
-          <MailOutline style={{ marginRight: '10px' }} />
+          <MailOutlineIcon style={{ marginRight: '10px' }} />
           contact@lorem.dev
         </ContactItem>
       </Right>
     </Container>
   );
 };
-
-export default Footer;
