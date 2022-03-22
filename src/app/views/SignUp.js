@@ -14,7 +14,7 @@ const Container = styled.div`
 `;
 
 const Wrapper = styled.div`
-  width: 40%;
+  width: 40vw;
   padding: 20px;
   background-color: #fff;
 `;
