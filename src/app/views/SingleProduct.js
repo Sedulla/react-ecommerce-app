@@ -38,7 +38,7 @@ const Price = styled.span`
 `;
 
 const FilterContainer = styled.div`
-  width: 50%;
+  width: 50vw;
   margin: 30px 0px;
   display: flex;
   justify-content: space-between;
@@ -57,7 +57,7 @@ const FilterTitle = styled.span`
 const FilterColor = styled.div`
   width: 20px;
   height: 20px;
-  border-radius: 50%;
+  border-radius: 25px;
   background-color: ${(props) => props.color};
   margin: 0px 5px;
   cursor: pointer;
@@ -71,7 +71,7 @@ const FilterSize = styled.select`
 const FilterSizeOption = styled.option``;
 
 const AddContainer = styled.div`
-  width: 50%;
+  width: 50vw;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -117,11 +117,8 @@ export const SingleProduct = () => {
         <InfoContainer>
           <Title>Elit Justo</Title>
           <Desc>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem nostrum
-            temporibus fugit quisquam porro nobis et cumque non quibusdam,
-            corrupti sunt. Quidem dignissimos nobis dolorem omnis ullam
-            necessitatibus, expedita culpa rem natus? Laborum qui saepe vitae
-            non fugit maiores provident recusandae veniam nemo?
+            They craft affordable, high-quality menswear for your everyday and
+            once-in-a-lifetime moments.
           </Desc>
           <Price>$20</Price>
           <FilterContainer>

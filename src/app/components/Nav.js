@@ -39,7 +39,9 @@ const SearchContainer = styled.div`
 
 const Input = styled.input`
   border: none;
-
+  &:focus {
+    outline: none;
+  }
 `;
 
 const Center = styled.div`
@@ -62,6 +64,10 @@ const MenuItem = styled.div`
   font-size: 14px;
   cursor: pointer;
   margin-left: 25px;
+
+  &:hover {
+    color: #009000;
+  }
 `;
 
 export const Nav = () => {
@@ -72,7 +78,9 @@ export const Nav = () => {
           <Language>EN</Language>
           <SearchContainer>
             <Input placeholder="Search" />
-            <SearchIcon style={{ color: 'gray', fontSize: 16 }} />
+            <SearchIcon
+              style={{ color: 'gray', fontSize: 16, cursor: 'pointer' }}
+            />
           </SearchContainer>
         </Left>
         <Center>
@@ -84,13 +92,13 @@ export const Nav = () => {
         </Center>
         <Right>
           <MenuItem>
-            <Link className="link" to="/register">
-              REGISTER
+            <Link className="link" to="/signup">
+              SIGN UP
             </Link>
           </MenuItem>
           <MenuItem>
             <Link className="link" to="/login">
-              SIGN IN
+              LOG IN
             </Link>
           </MenuItem>
           <MenuItem>

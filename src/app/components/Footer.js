@@ -9,6 +9,7 @@ import {
   FaInstagram as InstagramIcon,
   FaTwitter as TwitterIcon,
 } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const Container = styled.div`
   display: flex;
@@ -34,7 +35,7 @@ const SocialContainer = styled.div`
 const SocialIcon = styled.div`
   width: 40px;
   height: 40px;
-  border-radius: 50%;
+  border-radius: 25px;
   color: #fff;
   background-color: #${(props) => props.color};
   display: flex;
@@ -56,13 +57,17 @@ const List = styled.ul`
   margin: 0;
   padding: 0;
   list-style: none;
-  display: flex;
-  flex-wrap: wrap;
+  columns: 2;
+  -webkit-columns: 2;
+  -moz-columns: 2;
 `;
 
 const ListItem = styled.li`
-  width: 50px; /* fix this */
   margin-bottom: 10px;
+
+  &:hover {
+    color: #009000;
+  }
 `;
 
 const Right = styled.div`
@@ -82,36 +87,80 @@ export const Footer = () => {
       <Left>
         <Logo>Logo.</Logo>
         <Desc>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nulla ut
-          eligendi laboriosam animi eum doloremque, nisi fugiat libero
-          laudantium itaque vitae est repudiandae officiis hic? Maiores,
-          possimus! Nam, perspiciatis aperiam?
+          They craft affordable, high-quality menswear for your everyday and
+          once-in-a-lifetime moments.
         </Desc>
         <SocialContainer>
-          <SocialIcon color="3b5999">
-            <FacebookIcon />
-          </SocialIcon>
-          <SocialIcon color="e4405f">
-            <InstagramIcon />
-          </SocialIcon>
-          <SocialIcon color="55acee">
-            <TwitterIcon />
-          </SocialIcon>
+          <Link to>
+            <SocialIcon color="3b5999">
+              <FacebookIcon style={{ fontSize: '19px' }} />
+            </SocialIcon>
+          </Link>
+          <Link to>
+            <SocialIcon color="e4405f">
+              <InstagramIcon />
+            </SocialIcon>
+          </Link>
+          <Link to>
+            <SocialIcon color="55acee">
+              <TwitterIcon />
+            </SocialIcon>
+          </Link>
         </SocialContainer>
       </Left>
       <Center>
         <Title>Useful Links</Title>
         <List>
-          <ListItem>Home</ListItem>
-          <ListItem>Cart</ListItem>
-          <ListItem>Man Clothes</ListItem>
-          <ListItem>Cart</ListItem>
-          <ListItem>Cart</ListItem>
-          <ListItem>My Account</ListItem>
-          <ListItem>Order Tracking</ListItem>
-          <ListItem>Wishlist</ListItem>
-          <ListItem>Wishlist</ListItem>
-          <ListItem>Terms</ListItem>
+          <ListItem>
+            <Link className="link" to>
+              About us
+            </Link>
+          </ListItem>
+          <ListItem>
+            <Link className="link" to>
+              Careers
+            </Link>
+          </ListItem>
+          <ListItem>
+            <Link className="link" to>
+              Terms and Conditions
+            </Link>
+          </ListItem>
+          <ListItem>
+            <Link className="link" to>
+              Privacy Policy
+            </Link>
+          </ListItem>
+          <ListItem>
+            <Link className="link" to>
+              Blog
+            </Link>
+          </ListItem>
+          <ListItem>
+            <Link className="link" to>
+              FAQs
+            </Link>
+          </ListItem>
+          <ListItem>
+            <Link className="link" to>
+              Sizing Charts
+            </Link>
+          </ListItem>
+          <ListItem>
+            <Link className="link" to>
+              Order Tracking
+            </Link>
+          </ListItem>
+          <ListItem>
+            <Link className="link" to>
+              Shipping
+            </Link>
+          </ListItem>
+          <ListItem>
+            <Link className="link" to>
+              Contact us
+            </Link>
+          </ListItem>
         </List>
       </Center>
       <Right>
@@ -126,7 +175,7 @@ export const Footer = () => {
         </ContactItem>
         <ContactItem>
           <MailOutlineIcon style={{ marginRight: '10px' }} />
-          contact@lorem.dev
+          contact@ahmad.dev
         </ContactItem>
       </Right>
     </Container>

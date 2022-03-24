@@ -8,8 +8,8 @@ import styled from 'styled-components';
 
 const Info = styled.div`
   opacity: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 31vw;
+  height: 50vh;
   position: absolute;
   top: 0;
   left: 0;
@@ -39,7 +39,7 @@ const Container = styled.div`
 `;
 
 const Image = styled.img`
-  height: 75vh;
+  height: 35vh;
   z-index: 2;
 `;
 
