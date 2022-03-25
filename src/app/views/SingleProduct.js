@@ -103,6 +103,7 @@ const Button = styled.button`
 
   &:hover {
     background-color: #f8f4f4;
+    transition: 0.3s;
   }
 `;
 

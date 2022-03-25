@@ -79,6 +79,12 @@ const Button = styled.button`
   font-size: 20px;
   background-color: transparent;
   cursor: pointer;
+
+  &:hover {
+    background-color: #fff;
+    color: #000;
+    transition: 0.3s;
+  }
 `;
 
 export const Slider = () => {

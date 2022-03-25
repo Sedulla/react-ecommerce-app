@@ -42,6 +42,7 @@ const ShopButton = styled.button`
   &:hover {
     background: #000;
     color: #fff;
+    transition: 0.3s;
   }
 `;
 

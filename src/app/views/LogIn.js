@@ -47,6 +47,11 @@ const Button = styled.button`
   color: #fff;
   cursor: pointer;
   margin-bottom: 10px;
+
+  &:hover {
+    background-color: #006600;
+    transition: 0.3s;
+  }
 `;
 
 const ALink = styled.a`

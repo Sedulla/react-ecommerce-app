@@ -41,6 +41,11 @@ const SendButton = styled.button`
   background-color: #009000;
   border: none;
   cursor: pointer;
+
+  &:hover {
+    background-color: #006600;
+    transition: 0.3s;
+  }
 `;
 
 export const Newsletter = () => {

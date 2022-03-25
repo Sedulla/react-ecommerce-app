@@ -48,6 +48,11 @@ const Button = styled.button`
   background-color: #009000;
   color: #fff;
   cursor: pointer;
+
+  &:hover {
+    background-color: #006600;
+    transition: 0.3s;
+  }
 `;
 
 export const SignUp = () => {
