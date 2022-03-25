@@ -1,7 +1,7 @@
-import { Add, Remove } from '@mui/icons-material';
+import { MdAdd as AddIcon, MdRemove as RemoveIcon } from 'react-icons/md';
 import styled from 'styled-components';
-import Footer from '../components/Footer';
-import Nav from '../components/Nav';
+import { Nav } from '../components/Nav';
+import { Footer } from '../components/Footer';
 
 const Container = styled.div``;
 
@@ -142,9 +142,9 @@ export const SingleProduct = () => {
           </FilterContainer>
           <AddContainer>
             <AmountContainer>
-              <Remove />
+              <RemoveIcon />
               <Amount>1</Amount>
-              <Add />
+              <AddIcon />
             </AmountContainer>
             <Button>ADD TO CART</Button>
           </AddContainer>
