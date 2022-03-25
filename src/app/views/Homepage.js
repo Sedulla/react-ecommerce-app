@@ -10,13 +10,15 @@ import { Footer } from '../components/Footer';
 export const Homepage = () => {
   return (
     <>
-      <Announcement />
-      <Nav />
-      <Slider />
-      <Categories />
-      <Products />
-      <Newsletter />
-      <Footer />
+      <div style={{ overflowX: 'hidden' }}>
+        <Announcement />
+        <Nav />
+        <Slider />
+        <Categories />
+        <Products />
+        <Newsletter />
+        <Footer />
+      </div>
     </>
   );
 };
