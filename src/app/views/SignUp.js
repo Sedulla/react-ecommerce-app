@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import styled from 'styled-components';
+import { mobile } from '../utils/responsive';
 import { LogIn } from './LogIn';
 
-const Alert = styled.div``
+const Alert = styled.div``;
 
 const Container = styled.div`
   width: 100vw;
@@ -14,9 +15,10 @@ const Container = styled.div`
 `;
 
 const Wrapper = styled.div`
-  width: 40vw;
+  width: 50vw;
   padding: 20px;
   background-color: #fff;
+  ${mobile({ width: ' 90vw' })}
 `;
 
 const Title = styled.h1`

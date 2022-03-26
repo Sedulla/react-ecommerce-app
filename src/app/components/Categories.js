@@ -2,11 +2,13 @@ import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import { CategoryItem } from './CategoryItem';
+import { mobile } from '../utils/responsive';
 
 const Container = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 23px;
+  ${mobile({ padding: '0', flexDirection: 'column' })}
 `;
 
 export const Categories = () => {

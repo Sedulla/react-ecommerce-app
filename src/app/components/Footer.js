@@ -10,9 +10,11 @@ import {
   FaTwitter as TwitterIcon,
 } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { mobile } from '../utils/responsive';
 
 const Container = styled.div`
   display: flex;
+  ${mobile({ flexDirection: 'column' })}
 `;
 
 const Left = styled.div`
@@ -73,6 +75,7 @@ const ListItem = styled.li`
 const Right = styled.div`
   flex: 1;
   padding: 20px;
+  ${mobile({ backgroundColor: '#f5fafd' })}
 `;
 
 const ContactItem = styled.div`

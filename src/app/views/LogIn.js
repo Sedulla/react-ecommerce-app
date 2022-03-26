@@ -4,22 +4,23 @@ import { Link } from 'react-router-dom';
 // import Home from "../pages/Home";
 // import { Alert } from "@mui/material";
 import { useForm } from 'react-hook-form';
+import { mobile } from '../utils/responsive';
 
 const EMAIL_PATTERN = /^\S+@\S+\.\S+$/;
 
 const Container = styled.div`
-  width: 100vw;
-  height: 100vh;
+  width: 90vw;
+  height: 90vh;
   background: rgba(255, 255, 255, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  place-items: center;
 `;
 
 const Wrapper = styled.div`
-  width: 25vw;
+  width: 23vw;
   padding: 20px;
   background-color: #fff;
+  ${mobile({ width: ' 90vw' })}
 `;
 
 const Title = styled.h1`

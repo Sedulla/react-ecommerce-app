@@ -6,6 +6,7 @@ import {
 
 import styled from 'styled-components';
 import { slideItems } from '../utils/data';
+import { mobile } from '../utils/responsive';
 
 const Container = styled.div`
   width: 100vw;
@@ -13,6 +14,7 @@ const Container = styled.div`
   display: flex;
   position: relative;
   overflow: hidden;
+  ${mobile({ display: 'none' })}
 `;
 
 const Arrow = styled.div`

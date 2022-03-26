@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { MdSend as SendIcon } from 'react-icons/md';
+import { mobile } from '../utils/responsive';
 
 const Container = styled.div`
   height: 60vh;
@@ -19,6 +20,7 @@ const Desc = styled.div`
   margin-bottom: 23px;
   font-size: 24px;
   font-weight: 300;
+  ${mobile({ textAlign: 'center' })}
 `;
 
 const Form = styled.form`
@@ -28,6 +30,7 @@ const Form = styled.form`
   height: 40px;
   background-color: #fff;
   border: 1px solid #e5e5e5;
+  ${mobile({ width: '90vw' })}
 `;
 
 const EmailInput = styled.input`

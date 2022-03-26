@@ -3,11 +3,13 @@ import { MdAdd as AddIcon, MdRemove as RemoveIcon } from 'react-icons/md';
 import { Announcement } from '../components/Announcement';
 import { Footer } from '../components/Footer';
 import { Nav } from '../components/Nav';
+import { mobile } from '../utils/responsive';
 
 const Container = styled.div``;
 
 const Wrapper = styled.div`
   padding: 23px;
+  ${mobile({ padding: '11px' })}
 `;
 
 const Title = styled.h1`
@@ -32,7 +34,9 @@ const TopButton = styled.button`
   color: ${(props) => props.type === 'filled' && '#fff'};
 `;
 
-const TopTexts = styled.div``;
+const TopTexts = styled.div`
+  ${mobile({ display: 'none' })}
+`;
 
 const TopText = styled.span`
   text-decoration: underline;
@@ -42,6 +46,7 @@ const TopText = styled.span`
 const Bottom = styled.div`
   display: flex;
   justify-content: space-between;
+  ${mobile({ flexDirection: 'column', gap: '15px' })}
 `;
 
 const Info = styled.div`
@@ -51,6 +56,7 @@ const Info = styled.div`
 const Product = styled.div`
   display: flex;
   justify-content: space-between;
+  ${mobile({ flexDirection: 'column' })}
 `;
 
 const ProductDetails = styled.div`
@@ -61,6 +67,7 @@ const ProductDetails = styled.div`
 const ProductImage = styled.img`
   width: 15vw;
   border-radius: 19px;
+  ${mobile({ width: '130px' })}
 `;
 
 const Details = styled.div`
@@ -94,6 +101,7 @@ const ProductAmountContainer = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 23px;
+  ${mobile({ margin: '5px 9px' })}
 `;
 
 const ProductAmount = styled.span`
@@ -104,6 +112,7 @@ const ProductAmount = styled.span`
 const ProductPrice = styled.span`
   font-size: 30px;
   font-weight: 300;
+  ${mobile({ marginBottom: '9px' })}
 `;
 
 const Hr = styled.hr`
@@ -153,6 +162,7 @@ const SummaryButton = styled.button`
     background-color: #009000;
     transition: 0.3s;
   }
+  ${mobile({ width: '70vw' })}
 `;
 
 export const Cart = () => {
