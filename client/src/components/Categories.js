@@ -1,8 +1,7 @@
-import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import axios from 'axios';
 import { CategoryItem } from './CategoryItem';
 import { mobile } from '../utils/responsive';
+import { categories } from '../utils/data';
 
 const Container = styled.div`
   display: flex;
@@ -12,17 +11,6 @@ const Container = styled.div`
 `;
 
 export const Categories = () => {
-  const [categories, setCategories] = useState([]);
-
-  // fetching products from api
-  useEffect(() => {
-    axios.get('https://fakestoreapi.com/products?limit=3').then((response) => {
-      setCategories(response.data);
-    });
-  }, []);
-
-  if (!categories) return null;
-
   return (
     <Container>
       {categories &&
