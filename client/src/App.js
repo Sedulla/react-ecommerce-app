@@ -1,12 +1,12 @@
 import { Routes, Route } from 'react-router-dom';
 
 // Pages and components
-import { Homepage } from './app/views/Homepage';
-import { LogIn } from './app/views/LogIn';
-import { SignUp } from './app/views/SignUp';
-import { SingleProduct } from './app/views/SingleProduct';
-import { ProductList } from './app/views/ProductList';
-import { Cart } from './app/views/Cart';
+import { Homepage } from './views/Homepage';
+import { LogIn } from './views/LogIn';
+import { SignUp } from './views/SignUp';
+import { SingleProduct } from './views/SingleProduct';
+import { ProductList } from './views/ProductList';
+import { Cart } from './views/Cart';
 // import ProtectedRoute from './pages/ProtectedRoute';
 
 export const App = () => {
