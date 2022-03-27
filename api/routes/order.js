@@ -7,7 +7,7 @@ const {
 
 const router = require("express").Router();
 
-//CREATE
+// Add new order
 
 router.post("/", verifyToken, async (req, res) => {
   const newOrder = new Order(req.body);
@@ -76,10 +76,10 @@ router.get("/income", verifyTokenAndAdmin, async (req, res) => {
 
   try {
     const income = await Order.aggregate([
-      { $match: { createdAt: { $gte: previousMonth } } },
+      { $match: { addedAt: { $gte: previousMonth } } },
       {
         $project: {
-          month: { $month: "$createdAt" },
+          month: { $month: "$addedAt" },
           sales: "$amount",
         },
       },
