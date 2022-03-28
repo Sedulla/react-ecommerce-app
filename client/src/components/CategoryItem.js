@@ -52,7 +52,7 @@ const ShopButton = styled.button`
 export const CategoryItem = ({ category }) => {
   return (
     <Container>
-      <Link to={`/category/${category.cat}`}>
+      <Link to={`/products/${category.cat}`}>
         <Image src={category.image} />
         <Info>
           <Title>{category.title}</Title>
