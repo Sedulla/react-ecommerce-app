@@ -8,8 +8,8 @@ import styled from 'styled-components';
 
 const Info = styled.div`
   opacity: 0;
-  width: 31vw;
-  height: 50vh;
+  width: 29rem;
+  height: 330px;
   position: absolute;
   top: 0;
   left: 0;
@@ -23,15 +23,14 @@ const Info = styled.div`
 `;
 
 const Container = styled.div`
-  flex: 1;
-  margin: 5px;
-  min-width: 280px;
-  height: 350px;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 330px;
+  height: 21rem;
+  margin: 5px;
   background-color: #f5fbfd;
-  position: relative;
 
   &:hover ${Info} {
     opacity: 1;
@@ -62,7 +61,7 @@ const Icon = styled.div`
 export const Product = ({ product }) => {
   return (
     <Container>
-      <Image src={product.image} />
+      <Image src={product.img} />
       <Info>
         <Icon>
           <ShoppingCartIcon />

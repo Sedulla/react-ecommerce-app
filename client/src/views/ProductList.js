@@ -43,14 +43,14 @@ const Option = styled.option``;
 export const ProductList = () => {
   const location = useLocation();
   const cat = location.pathname.split('/')[2];
-  const [filter, setFilter] = useState({});
+  const [filters, setFilters] = useState({});
   const [sort, setSort] = useState('newest');
 
   const handleFilters = (e) => {
     const value = e.target.value;
 
-    setFilter({
-      ...filter,
+    setFilters({
+      ...filters,
       [e.target.name]: value,
     });
   };
@@ -70,11 +70,12 @@ export const ProductList = () => {
               <Option>Black</Option>
               <Option>Blue</Option>
               <Option>Green</Option>
+              <Option>Brown</Option>
             </Select>
             <Select name="size" onChange={handleFilters}>
               <Option disabled>Size</Option>
+              <Option>Extra Small</Option>
               <Option>Small</Option>
-              <Option>Medium</Option>
               <Option>Large</Option>
               <Option>Extra Large</Option>
             </Select>
@@ -89,9 +90,7 @@ export const ProductList = () => {
             </Select>
           </Filter>
         </FilterContainer>
-        <Products />
-        <Products />
-        <Products />
+        <Products cat={cat} filters={filters} sort={sort} />
         <Newsletter />
         <Footer />
       </Container>
