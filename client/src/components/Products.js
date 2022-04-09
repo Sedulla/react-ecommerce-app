@@ -16,6 +16,7 @@ export const Products = ({ cat, filters, sort }) => {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
 
+  // Get all products from the database and set them to the state
   useEffect(() => {
     const getProducts = async () => {
       try {
@@ -32,6 +33,7 @@ export const Products = ({ cat, filters, sort }) => {
     getProducts();
   }, [cat]);
 
+  // Filter products by the filters
   useEffect(() => {
     cat &&
       setFilteredProducts(
@@ -43,11 +45,14 @@ export const Products = ({ cat, filters, sort }) => {
       );
   }, [cat, filters, products]);
 
+  // Sort products by the sort
   useEffect(() => {
     if (sort === 'newest') {
       setFilteredProducts((prev) =>
         [...prev].sort((a, b) => a.createdAt - b.createdAt)
       );
+
+      // Sort by price
     } else if (sort === 'asc') {
       setFilteredProducts((prev) =>
         [...prev].sort((a, b) => a.price - b.price)

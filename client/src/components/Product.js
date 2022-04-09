@@ -67,7 +67,7 @@ export const Product = ({ product }) => {
           <ShoppingCartIcon />
         </Icon>
         <Icon>
-          <Link className="link" to="/product">
+          <Link className="link" to={`/product/${product._id}`}>
             <SearchIcon />
           </Link>
         </Icon>

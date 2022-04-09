@@ -1,7 +1,12 @@
-import { MdAdd as AddIcon, MdRemove as RemoveIcon } from 'react-icons/md';
-import styled from 'styled-components';
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import axios from 'axios';
+
 import { Nav } from '../components/Nav';
 import { Footer } from '../components/Footer';
+
+import { MdAdd as AddIcon, MdRemove as RemoveIcon } from 'react-icons/md';
+import styled from 'styled-components';
 import { mobile } from '../utils/responsive';
 
 const Container = styled.div``;
@@ -120,43 +125,72 @@ const Button = styled.button`
 `;
 
 export const SingleProduct = () => {
+  const location = useLocation();
+  const productId = location.pathname.split('/')[2];
+  const [product, setProduct] = useState({});
+  const [quantity, setQuantity] = useState(1);
+  const [size, setSize] = useState('');
+  const [color, setColor] = useState('');
+
+  useEffect(() => {
+    const getSingleProduct = async () => {
+      try {
+        const response = await axios.get(
+          `${process.env.REACT_APP_API_URL}/products/find/${productId}`
+        );
+        console.log(response);
+        setProduct(response.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getSingleProduct();
+  }, [productId]);
+
+  const handleQuantity = (type) => {
+    if (type === 'dec') {
+      quantity > 1 && setQuantity(quantity - 1);
+    } else {
+      setQuantity(quantity + 1);
+    }
+  };
+
   return (
     <Container>
       <Nav />
       <Wrapper>
         <ImgContainer>
-          <Image src="https://i.ibb.co/XsdmR2c/1.png"></Image>
+          <Image src={product.img} />
         </ImgContainer>
         <InfoContainer>
-          <Title>Elit Justo</Title>
-          <Desc>
-            They craft affordable, high-quality menswear for your everyday and
-            once-in-a-lifetime moments.
-          </Desc>
-          <Price>$20</Price>
+          <Title>{product.title}</Title>
+          <Desc>{product.desc}</Desc>
+          <Price>$ {product.price}</Price>
           <FilterContainer>
             <Filter>
               <FilterTitle>Color</FilterTitle>
-              <FilterColor color="black" />
-              <FilterColor color="darkblue" />
-              <FilterColor color="gray" />
+              {product.color?.map((col) => (
+                <FilterColor
+                  color={col}
+                  key={col}
+                  onClick={() => setColor(col)}
+                />
+              ))}
             </Filter>
             <Filter>
               <FilterTitle>Size</FilterTitle>
-              <FilterSize>
-                <FilterSizeOption>XS</FilterSizeOption>
-                <FilterSizeOption>S</FilterSizeOption>
-                <FilterSizeOption>M</FilterSizeOption>
-                <FilterSizeOption>L</FilterSizeOption>
-                <FilterSizeOption>XL</FilterSizeOption>
+              <FilterSize onChange={(e) => setSize(e.target.value)}>
+                {product.size?.map((size) => (
+                  <FilterSizeOption key={size}>{size}</FilterSizeOption>
+                ))}
               </FilterSize>
             </Filter>
           </FilterContainer>
           <AddContainer>
             <AmountContainer>
-              <RemoveIcon />
-              <Amount>1</Amount>
-              <AddIcon />
+              <RemoveIcon onClick={() => handleQuantity('dec')} />
+              <Amount>{quantity}</Amount>
+              <AddIcon onClick={() => handleQuantity('inc')} />
             </AmountContainer>
             <Button>ADD TO CART</Button>
           </AddContainer>
