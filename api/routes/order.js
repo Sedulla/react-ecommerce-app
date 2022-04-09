@@ -7,7 +7,7 @@ const {
 
 const router = require("express").Router();
 
-// Add new order
+// ADD NEW ORDER
 
 router.post("/", verifyToken, async (req, res) => {
   const newOrder = new Order(req.body);
@@ -20,7 +20,7 @@ router.post("/", verifyToken, async (req, res) => {
   }
 });
 
-//UPDATE
+// UPDATE
 router.put("/:id", verifyTokenAndAdmin, async (req, res) => {
   try {
     const updatedOrder = await Order.findByIdAndUpdate(
@@ -36,7 +36,7 @@ router.put("/:id", verifyTokenAndAdmin, async (req, res) => {
   }
 });
 
-//DELETE
+// DELETE
 router.delete("/:id", verifyTokenAndAdmin, async (req, res) => {
   try {
     await Order.findByIdAndDelete(req.params.id);
@@ -46,7 +46,7 @@ router.delete("/:id", verifyTokenAndAdmin, async (req, res) => {
   }
 });
 
-//GET USER ORDERS
+// GET USER ORDERS
 router.get("/find/:userId", verifyTokenAndAuthorization, async (req, res) => {
   try {
     const orders = await Order.find({ userId: req.params.userId });
@@ -76,10 +76,10 @@ router.get("/income", verifyTokenAndAdmin, async (req, res) => {
 
   try {
     const income = await Order.aggregate([
-      { $match: { addedAt: { $gte: previousMonth } } },
+      { $match: { createdAt: { $gte: previousMonth } } },
       {
         $project: {
-          month: { $month: "$addedAt" },
+          month: { $month: "$createdAt" },
           sales: "$amount",
         },
       },
