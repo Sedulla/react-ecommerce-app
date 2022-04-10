@@ -19,10 +19,13 @@ export const App = () => {
         <Route path="/products/:category" element={<ProductList />} />
         <Route path="/product/:id" element={<SingleProduct />} />
         <Route path="/cart" element={<Cart />} />
-        <Route path="/login" element={user ? <Navigate to="/" replace /> : <LogIn />} />
+        <Route
+          path="/login"
+          element={user ? <Navigate to="/" replace /> : <LogIn />}
+        />
         <Route
           path="/signup"
-          element={user ? <Navigate to="/" replace/> : <SignUp />}
+          element={user ? <Navigate to="/" replace /> : <SignUp />}
         />
         <Route path="*" element={<div>404 Not Found</div>} />
       </Routes>

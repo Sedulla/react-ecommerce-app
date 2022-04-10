@@ -5,6 +5,7 @@ import {
   MdOutlineShoppingCart as OutlineShoppingCartIcon,
 } from 'react-icons/md';
 import { mobile } from '../utils/responsive';
+import { useSelector } from 'react-redux';
 
 const Badge = styled.div``;
 
@@ -80,6 +81,8 @@ const MenuItem = styled.div`
 `;
 
 export const Nav = () => {
+  const quantity = useSelector((state) => state.cart.quantity);
+
   return (
     <Container>
       <Wrapper>
@@ -111,7 +114,7 @@ export const Nav = () => {
             </Link>
           </MenuItem>
           <MenuItem>
-            <Badge badgeContent={4} color="primary">
+            <Badge badgeContent={quantity} color="primary">
               <OutlineShoppingCartIcon />
             </Badge>
           </MenuItem>

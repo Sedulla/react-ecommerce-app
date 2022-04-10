@@ -8,6 +8,8 @@ import { Footer } from '../components/Footer';
 import { MdAdd as AddIcon, MdRemove as RemoveIcon } from 'react-icons/md';
 import styled from 'styled-components';
 import { mobile } from '../utils/responsive';
+import { useDispatch } from 'react-redux';
+import { addProduct } from '../redux/cartSlice';
 
 const Container = styled.div``;
 
@@ -131,6 +133,7 @@ export const SingleProduct = () => {
   const [quantity, setQuantity] = useState(1);
   const [size, setSize] = useState('');
   const [color, setColor] = useState('');
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const getSingleProduct = async () => {
@@ -153,6 +156,10 @@ export const SingleProduct = () => {
     } else {
       setQuantity(quantity + 1);
     }
+  };
+
+  const handleAddToCart = () => {
+    dispatch(addProduct({ ...product, quantity, size, color }));
   };
 
   return (
@@ -192,7 +199,7 @@ export const SingleProduct = () => {
               <Amount>{quantity}</Amount>
               <AddIcon onClick={() => handleQuantity('inc')} />
             </AmountContainer>
-            <Button>ADD TO CART</Button>
+            <Button onClick={handleAddToCart}>ADD TO CART</Button>
           </AddContainer>
         </InfoContainer>
       </Wrapper>
