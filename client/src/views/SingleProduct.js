@@ -159,8 +159,12 @@ export const SingleProduct = () => {
   };
 
   const handleAddToCart = () => {
-    dispatch(addProduct({ ...product, quantity, size, color }));
+    dispatch(addProduct({ ...product, quantity, color, size }));
   };
+
+  useEffect(() => {
+    console.log(size);
+  }, [size]);
 
   return (
     <Container>
@@ -186,9 +190,15 @@ export const SingleProduct = () => {
             </Filter>
             <Filter>
               <FilterTitle>Size</FilterTitle>
-              <FilterSize onChange={(e) => setSize(e.target.value)}>
+              <FilterSize
+                value={size}
+                defaultValue={size}
+                onChange={(e) => setSize(e.target.value)}
+              >
                 {product.size?.map((size) => (
-                  <FilterSizeOption key={size}>{size}</FilterSizeOption>
+                  <FilterSizeOption key={size} value={size}>
+                    {size}
+                  </FilterSizeOption>
                 ))}
               </FilterSize>
             </Filter>
