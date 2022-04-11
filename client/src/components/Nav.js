@@ -1,13 +1,46 @@
 import { Link } from 'react-router-dom';
+
 import styled from 'styled-components';
 import {
   MdSearch as SearchIcon,
   MdOutlineShoppingCart as OutlineShoppingCartIcon,
 } from 'react-icons/md';
 import { mobile } from '../utils/responsive';
+
 import { useSelector } from 'react-redux';
 
-const Badge = styled.div``;
+const Button = styled.button`
+  position: relative;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 9px;
+  padding-bottom: 5px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  ${mobile({ fontSize: '11px' })}
+
+  &:hover {
+    /* !TODO: set background color */
+  }
+`;
+
+const Badge = styled.span`
+  position: absolute;
+  top: -9px;
+  right: -9px;
+  background-color: #009000;
+  color: #fff;
+  height: 11px;
+  width: 11px;
+  border-radius: 25px;
+  padding: 5px;
+  font-size: 11px;
+  display: ${(props) => (props.count > 0 ? 'inline-block' : 'none')};
+`;
 
 const Container = styled.div`
   height: 70px;
@@ -114,9 +147,10 @@ export const Nav = () => {
             </Link>
           </MenuItem>
           <MenuItem>
-            <Badge badgeContent={quantity} color="primary">
+            <Button>
+              <Badge count={quantity}>{quantity}</Badge>
               <OutlineShoppingCartIcon />
-            </Badge>
+            </Button>
           </MenuItem>
         </Right>
       </Wrapper>
