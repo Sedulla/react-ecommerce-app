@@ -146,12 +146,14 @@ export const Nav = () => {
               LOG IN
             </Link>
           </MenuItem>
-          <MenuItem>
-            <Button>
-              <Badge count={quantity}>{quantity}</Badge>
-              <OutlineShoppingCartIcon />
-            </Button>
-          </MenuItem>
+          <Link to='/cart'>
+            <MenuItem>
+              <Button>
+                <Badge count={quantity}>{quantity}</Badge>
+                <OutlineShoppingCartIcon />
+              </Button>
+            </MenuItem>
+          </Link> 
         </Right>
       </Wrapper>
     </Container>

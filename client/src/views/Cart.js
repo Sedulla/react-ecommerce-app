@@ -4,6 +4,7 @@ import { Announcement } from '../components/Announcement';
 import { Footer } from '../components/Footer';
 import { Nav } from '../components/Nav';
 import { mobile } from '../utils/responsive';
+import { useSelector } from 'react-redux';
 
 const Container = styled.div``;
 
@@ -166,6 +167,9 @@ const SummaryButton = styled.button`
 `;
 
 export const Cart = () => {
+  const cart = useSelector((state) => state.cart);
+  let shippingCost = 15.95;
+
   return (
     <>
       <Container>
@@ -183,75 +187,51 @@ export const Cart = () => {
           </Top>
           <Bottom>
             <Info>
-              <Product>
-                <ProductDetails>
-                  <ProductImage src="https://i.ibb.co/XsdmR2c/3.png" />
-                  <Details>
-                    <ProductName>
-                      <b>Product:</b> Kabul Carduroy Jubba
-                    </ProductName>
-                    <ProductColor color="#000" /> {/* black*/}
-                    <ProductSize>
-                      <b>Size:</b> 37
-                    </ProductSize>
-                  </Details>
-                </ProductDetails>
-                <PriceDetail>
-                  <ProductAmountContainer>
-                    <AddIcon />
-                    <ProductAmount>1</ProductAmount>
-                    <RemoveIcon />
-                  </ProductAmountContainer>
-                  <ProductPrice>$ 59.95</ProductPrice>
-                </PriceDetail>
-              </Product>
-
-              <Hr />
-
-              <Product>
-                <ProductDetails>
-                  <ProductImage
-                    src="https://i.ibb.co/XsdmR2c/3.png"
-                    loading="lazy"
-                  />
-                  <Details>
-                    <ProductName>
-                      <b>Product:</b> Tri-Color Sleeve
-                    </ProductName>
-                    <ProductColor color="#A9AFBB" />
-                    <ProductSize>
-                      <b>Size:</b> 37
-                    </ProductSize>
-                  </Details>
-                </ProductDetails>
-                <PriceDetail>
-                  <ProductAmountContainer>
-                    <AddIcon />
-                    <ProductAmount>1</ProductAmount>
-                    <RemoveIcon />
-                  </ProductAmountContainer>
-                  <ProductPrice>$ 39.95</ProductPrice>
-                </PriceDetail>
-              </Product>
+              {cart.products?.map((product) => {
+                return (
+                  <>
+                    <Product>
+                      <ProductDetails>
+                        <ProductImage src={product.img} />
+                        <Details>
+                          <ProductName>
+                            <b>Product:</b> {product.title}
+                          </ProductName>
+                          <ProductColor color={product.color} /> {/* black*/}
+                          <ProductSize>
+                            <b>Size:</b> {product.size}
+                          </ProductSize>
+                        </Details>
+                      </ProductDetails>
+                      <PriceDetail>
+                        <ProductAmountContainer>
+                          <AddIcon />
+                          <ProductAmount>{product.quantity}</ProductAmount>
+                          <RemoveIcon />
+                        </ProductAmountContainer>
+                        <ProductPrice>
+                          $ {product.price * product.quantity}
+                        </ProductPrice>
+                      </PriceDetail>
+                    </Product>
+                    <Hr />
+                  </>
+                );
+              })}
             </Info>
-
             <Summary>
               <SummaryTitle>YOUR ORDER SUMMARY</SummaryTitle>
               <SummaryItem>
                 <SummaryItemTitle>Subtotal</SummaryItemTitle>
-                <SummaryItemPrice>$ 99.9</SummaryItemPrice>
+                <SummaryItemPrice>$ {cart.total}</SummaryItemPrice>
               </SummaryItem>
               <SummaryItem>
                 <SummaryItemTitle>Shipping</SummaryItemTitle>
-                <SummaryItemPrice>$ 25.35</SummaryItemPrice>
-              </SummaryItem>
-              <SummaryItem>
-                <SummaryItemTitle>Tax</SummaryItemTitle>
-                <SummaryItemPrice>$ 0.00</SummaryItemPrice>
+                <SummaryItemPrice>$ {shippingCost}</SummaryItemPrice>
               </SummaryItem>
               <SummaryItem type="total">
                 <SummaryItemTitle>Total</SummaryItemTitle>
-                <SummaryItemPrice>$ 125.25</SummaryItemPrice>
+                <SummaryItemPrice>{cart.total + shippingCost}</SummaryItemPrice>
               </SummaryItem>
               <SummaryButton>CHECKOUT NOW</SummaryButton>
             </Summary>
