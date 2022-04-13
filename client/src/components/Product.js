@@ -8,8 +8,8 @@ import styled from 'styled-components';
 
 const Info = styled.div`
   opacity: 0;
-  width: 29rem;
-  height: 330px;
+  width: 419px;
+  height: 350px;
   position: absolute;
   top: 0;
   left: 0;
@@ -27,8 +27,8 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 330px;
-  height: 21rem;
+  min-width: 270px;
+  height: 350px;
   margin: 5px;
   background-color: #f5fbfd;
 
@@ -52,6 +52,7 @@ const Icon = styled.div`
   justify-content: center;
   margin: 10px;
   transition: all 0.5s ease;
+
   &:hover {
     background-color: #e9f5f5;
     transform: scale(1.1);
