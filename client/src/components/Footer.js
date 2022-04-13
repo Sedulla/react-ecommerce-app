@@ -11,6 +11,7 @@ import {
 } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { mobile } from '../utils/responsive';
+import { footerMenu } from '../utils/footerMenu';
 
 const Container = styled.div`
   display: flex;
@@ -114,56 +115,11 @@ export const Footer = () => {
       <Center>
         <Title>Useful Links</Title>
         <List>
-          <ListItem>
-            <Link className="link" to>
-              About us
-            </Link>
-          </ListItem>
-          <ListItem>
-            <Link className="link" to>
-              Careers
-            </Link>
-          </ListItem>
-          <ListItem>
-            <Link className="link" to>
-              Terms and Conditions
-            </Link>
-          </ListItem>
-          <ListItem>
-            <Link className="link" to>
-              Privacy Policy
-            </Link>
-          </ListItem>
-          <ListItem>
-            <Link className="link" to>
-              Blog
-            </Link>
-          </ListItem>
-          <ListItem>
-            <Link className="link" to>
-              FAQs
-            </Link>
-          </ListItem>
-          <ListItem>
-            <Link className="link" to>
-              Sizing Charts
-            </Link>
-          </ListItem>
-          <ListItem>
-            <Link className="link" to>
-              Order Tracking
-            </Link>
-          </ListItem>
-          <ListItem>
-            <Link className="link" to>
-              Shipping
-            </Link>
-          </ListItem>
-          <ListItem>
-            <Link className="link" to>
-              Contact us
-            </Link>
-          </ListItem>
+          {footerMenu.map((item) => (
+            <ListItem key={item.title}>
+              <Link to={item.link}>{item.title}</Link>
+            </ListItem>
+          ))}
         </List>
       </Center>
       <Right>
