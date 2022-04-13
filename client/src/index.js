@@ -6,16 +6,19 @@ import { App } from './App';
 
 // redux
 import { Provider } from 'react-redux';
-import { store } from './redux/store';
+import { persistor, store } from './redux/store';
+import { PersistGate } from 'redux-persist/integration/react';
 
 const rootElement = document.getElementById('root');
 
 ReactDOM.render(
   <StrictMode>
     <Provider store={store}>
-      <Router>
-        <App />
-      </Router>
+      <PersistGate loading={null} persistor={persistor}>
+        <Router>
+          <App />
+        </Router>
+      </PersistGate>
     </Provider>
   </StrictMode>,
   rootElement
