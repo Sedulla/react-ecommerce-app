@@ -1,12 +1,10 @@
-import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-// import { useState } from "react";
-// import Home from "../pages/Home";
-// import { Alert } from "@mui/material";
 import { useForm } from 'react-hook-form';
-import { mobile } from '../utils/responsive';
 
-const EMAIL_PATTERN = /^\S+@\S+\.\S+$/;
+import styled from 'styled-components';
+import { mobile } from '../utils/responsive';
+import { login } from '../redux/apiCalls';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Container = styled.div`
   width: 90vw;
@@ -53,6 +51,12 @@ const Button = styled.button`
     background-color: #006600;
     transition: 0.3s;
   }
+
+  /* during the login fetching request */
+  &::disabled {
+    background-color: #ddd;
+    cursor: not-allowed;
+  }
 `;
 
 const ALink = styled.a`
@@ -62,24 +66,30 @@ const ALink = styled.a`
   cursor: pointer;
 `;
 
+const ErrorMessage = styled.div`
+  color: red;
+  font-size: 11px;
+  margin-bottom: 9px;
+`;
+
 export const LogIn = () => {
   const {
     register,
     handleSubmit,
-    setValue,
     formState: { errors },
   } = useForm({
     defaultValues: {
-      email: '',
+      username: '',
       password: '',
     },
   });
+  const dispatch = useDispatch();
+  const { isFetching, error } = useSelector((state) => state.user);
 
   const onSubmit = (data) => {
-    console.log(data);
-    localStorage.setItem('user', JSON.stringify(data));
-    window.location.href = '/product';
-    // reset()
+    const { username, password } = data;
+
+    login(dispatch, { username, password });
   };
 
   return (
@@ -89,31 +99,30 @@ export const LogIn = () => {
           <Title>SIGN IN</Title>
           <Form onSubmit={handleSubmit(onSubmit)}>
             <Input
-              {...register('email', {
+              {...register('username', {
                 required: true,
-                pattern: EMAIL_PATTERN,
               })}
               type="text"
-              placeholder="email"
+              placeholder="Username"
             />
-            {errors.email?.type === 'required' && (
-              <div>Please fill the email field</div>
-            )}
-            {errors.email?.type === 'pattern' && (
-              <div>Please write proper email</div>
+            {errors.username?.type === 'required' && (
+              <div>Please fill the username field</div>
             )}
             <Input
-              // {...register("password", { required: true })}
-              onChange={(e) => {
-                setValue('password', e.target.value);
-              }}
+              {...register('password', { required: true, minLength: 5 })}
               type="password"
-              placeholder="password"
+              placeholder="Password"
             />
             {errors.password?.type === 'required' && (
               <div>Please fill the password field</div>
             )}
-            <Button type="submit">LOGIN</Button>
+            {errors.password?.type === 'minLength' && (
+              <div>Password must be at least 5 characters</div>
+            )}
+            <Button type="submit" disabled={isFetching}>
+              LOGIN
+            </Button>
+            {error && <ErrorMessage>Something went wrong...</ErrorMessage>}
             <ALink>DO NOT YOU REMEMBER THE PASSWORD?</ALink>
             <ALink>
               <Link className="link" to="/register">

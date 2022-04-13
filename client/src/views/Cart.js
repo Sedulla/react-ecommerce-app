@@ -170,8 +170,6 @@ export const Cart = () => {
   const cart = useSelector((state) => state.cart);
   let shippingCost = 15.95;
 
-  console.log(typeof `${cart.products[0] ? `${shippingCost}` : ''}`);
-
   return (
     <>
       <Container>

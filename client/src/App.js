@@ -7,10 +7,11 @@ import { ProductList } from './views/ProductList';
 import { Cart } from './views/Cart';
 import { LogIn } from './views/LogIn';
 import { SignUp } from './views/SignUp';
+import { useSelector } from 'react-redux';
 // import ProtectedRoute from './pages/ProtectedRoute';
 
 export const App = () => {
-  const user = true;
+  const user = useSelector((state) => state.user.currentUser);
 
   return (
     <>
