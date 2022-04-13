@@ -170,6 +170,8 @@ export const Cart = () => {
   const cart = useSelector((state) => state.cart);
   let shippingCost = 15.95;
 
+  console.log(typeof `${cart.products[0] ? `${shippingCost}` : ''}`);
+
   return (
     <>
       <Container>
@@ -227,11 +229,15 @@ export const Cart = () => {
               </SummaryItem>
               <SummaryItem>
                 <SummaryItemTitle>Shipping</SummaryItemTitle>
-                <SummaryItemPrice>$ {shippingCost}</SummaryItemPrice>
+                <SummaryItemPrice>
+                  $ {cart.products[0] ? `${shippingCost}` : 0}
+                </SummaryItemPrice>
               </SummaryItem>
               <SummaryItem type="total">
                 <SummaryItemTitle>Total</SummaryItemTitle>
-                <SummaryItemPrice>{cart.total + shippingCost}</SummaryItemPrice>
+                <SummaryItemPrice>
+                  {cart.total + `${cart.products[0] ? `${shippingCost}` : ''}`}
+                </SummaryItemPrice>
               </SummaryItem>
               <SummaryButton>CHECKOUT NOW</SummaryButton>
             </Summary>
