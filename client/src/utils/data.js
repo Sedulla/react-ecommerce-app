@@ -24,20 +24,20 @@ export const slideItems = [
 export const categories = [
   {
     id: nanoid(),
-    image: 'https://i.ibb.co/XsdmR2c/3.png',
-    title: 'Jubba',
+    image: 'https://i.ibb.co/tBR0sb0/morroccan-short-sleeve-thobe-gold.webp',
+    title: 'Thobe',
     cat: 'men1',
   },
   {
     id: nanoid(),
-    image: 'https://i.ibb.co/XsdmR2c/3.png',
-    title: 'Jubba',
+    image: 'https://i.ibb.co/Dgt8GTg/thobe-pants-taupe.webp',
+    title: 'Pants',
     cat: 'men3',
   },
   {
     id: nanoid(),
-    image: 'https://i.ibb.co/XsdmR2c/3.png',
-    title: 'Jubba',
+    image: 'https://i.ibb.co/Mc4jD5t/kashmiri-men-imamah-warm-tan.webp',
+    title: 'Imamah',
     cat: 'men5',
   },
 ];
