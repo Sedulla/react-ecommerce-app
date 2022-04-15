@@ -117,7 +117,9 @@ export const Footer = () => {
         <List>
           {footerMenu.map((item) => (
             <ListItem key={item.title}>
-              <Link to={item.link}>{item.title}</Link>
+              <Link class="link" to="">
+                {item.title}
+              </Link>
             </ListItem>
           ))}
         </List>
@@ -126,15 +128,15 @@ export const Footer = () => {
         <Title>Contact</Title>
         <ContactItem>
           <RoomIcon style={{ marginRight: '10px' }} />
-          622 Dixie Path, South Tobinchester 98336
+          AZE, Baku
         </ContactItem>
         <ContactItem>
           <PhoneIcon style={{ marginRight: '10px' }} />
-          +1 234 56 78
+          +99455 616 36 77
         </ContactItem>
         <ContactItem>
           <MailOutlineIcon style={{ marginRight: '10px' }} />
-          contact@ahmad.dev
+          sedullaa2001@gmail.com
         </ContactItem>
       </Right>
     </Container>

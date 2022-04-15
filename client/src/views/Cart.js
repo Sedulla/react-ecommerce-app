@@ -5,6 +5,7 @@ import { Footer } from '../components/Footer';
 import { Nav } from '../components/Nav';
 import { mobile } from '../utils/responsive';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const Container = styled.div``;
 
@@ -178,10 +179,13 @@ export const Cart = () => {
         <Wrapper>
           <Title>YOUR BAG</Title>
           <Top>
-            <TopButton>CONTINUE YOUR SHOPPING</TopButton>
+            <Link className="link" to="/products/men1">
+              <TopButton>CONTINUE YOUR SHOPPING</TopButton>
+            </Link>
             <TopTexts>
-              <TopText>Shopping Bag (2)</TopText>
-              <TopText>Your Wishlist (0)</TopText>
+              <TopText>Shopping Bag ({cart.products.length})</TopText>
+              <br />
+              <TopText>&nbsp; Your Wishlist (0)</TopText>
             </TopTexts>
             <TopButton type="filled">CHECKOUT</TopButton>
           </Top>
@@ -228,7 +232,8 @@ export const Cart = () => {
               <SummaryItem>
                 <SummaryItemTitle>Shipping</SummaryItemTitle>
                 <SummaryItemPrice>
-                  $ {cart.products[0] ? `${shippingCost}` : 0}
+                  {/* Free Shipping on Order Over $50 for discount announcement */}
+                  {cart.total > 50 ? 'Free' : `${shippingCost}`}
                 </SummaryItemPrice>
               </SummaryItem>
               <SummaryItem type="total">
