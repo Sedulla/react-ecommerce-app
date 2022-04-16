@@ -12,7 +12,7 @@ const Container = styled.div`
 `;
 
 const Image = styled.img`
-  height: 50vh;
+  height: 55vh;
   object-fit: cover;
   ${mobile({ height: '30vh' })}
 `;
@@ -33,6 +33,7 @@ const Title = styled.h1`
   color: #fff;
   margin-bottom: 15px;
 `;
+
 const ShopButton = styled.button`
   padding: 10px;
   font-size: 1.2rem;
