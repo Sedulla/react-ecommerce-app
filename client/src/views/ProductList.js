@@ -58,8 +58,8 @@ export const ProductList = () => {
   return (
     <>
       <Container>
-        <Nav />
         <Announcement />
+        <Nav />
         <Title>{cat}'s</Title>
         <FilterContainer>
           <Filter>

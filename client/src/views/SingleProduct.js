@@ -10,6 +10,7 @@ import styled from 'styled-components';
 import { mobile } from '../utils/responsive';
 import { useDispatch } from 'react-redux';
 import { addProduct } from '../redux/cartSlice';
+import { Announcement } from '../components/Announcement';
 
 const Container = styled.div``;
 
@@ -177,6 +178,7 @@ export const SingleProduct = () => {
 
   return (
     <Container>
+      <Announcement />
       <Nav />
       <Wrapper>
         <ImgContainer>

@@ -174,8 +174,8 @@ export const Cart = () => {
   return (
     <>
       <Container>
-        <Nav />
         <Announcement />
+        <Nav />
         <Wrapper>
           <Title>YOUR BAG</Title>
           <Top>
