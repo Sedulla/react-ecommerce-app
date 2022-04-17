@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import styled from 'styled-components';
 import {
@@ -7,7 +7,9 @@ import {
 } from 'react-icons/md';
 import { mobile } from '../utils/responsive';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../redux/userSlice';
+import { clearCart } from '../redux/cartSlice';
 
 const Button = styled.button`
   position: relative;
@@ -115,6 +117,16 @@ const MenuItem = styled.div`
 
 export const Nav = () => {
   const quantity = useSelector((state) => state.cart.quantity);
+  const user = useSelector((state) => state.user.currentUser);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleLogOut = () => {
+    dispatch(logout());
+    dispatch(clearCart());
+    
+    navigate('/');
+  };
 
   return (
     <Container>
@@ -136,24 +148,30 @@ export const Nav = () => {
           </Logo>
         </Center>
         <Right>
+          {user ? (
+            <MenuItem onClick={handleLogOut}>LOG OUT</MenuItem>
+          ) : (
+            <>
+              <MenuItem>
+                <Link className="link" to="/signup">
+                  SIGN UP
+                </Link>
+              </MenuItem>
+              <MenuItem>
+                <Link className="link" to="/login">
+                  LOG IN
+                </Link>
+              </MenuItem>
+            </>
+          )}
           <MenuItem>
-            <Link className="link" to="/signup">
-              SIGN UP
-            </Link>
-          </MenuItem>
-          <MenuItem>
-            <Link className="link" to="/login">
-              LOG IN
-            </Link>
-          </MenuItem>
-          <Link to='/cart'>
-            <MenuItem>
+            <Link to="/cart">
               <Button>
-                <Badge count={quantity}>{quantity}</Badge>
                 <OutlineShoppingCartIcon />
+                <Badge count={quantity}>{quantity}</Badge>
               </Button>
-            </MenuItem>
-          </Link> 
+            </Link>
+          </MenuItem>
         </Right>
       </Wrapper>
     </Container>
