@@ -36,7 +36,7 @@ export const categories = [
   },
   {
     id: nanoid(),
-    image: 'https://i.ibb.co/Mc4jD5t/kashmiri-men-imamah-warm-tan.webp',
+    image: 'https://i.ibb.co/dkd41Vv/image-0d1e10dc-962b-4e03-afed-37602feaddbe.webp',
     title: 'Imamah',
     cat: 'imamah',
   },

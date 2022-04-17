@@ -38,7 +38,7 @@ const Container = styled.div`
 `;
 
 const Image = styled.img`
-  height: 35vh;
+  height: 51.9vh;
   z-index: 2;
 `;
 

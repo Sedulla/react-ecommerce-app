@@ -27,6 +27,15 @@ const Wrapper = styled.div`
 
 const ImgContainer = styled.div`
   flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 50px;
+
+  ${mobile({
+    margin: '0',
+    marginBottom: '19px',
+  })}
 `;
 
 const Image = styled.img`

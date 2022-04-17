@@ -60,7 +60,7 @@ export const ProductList = () => {
       <Container>
         <Nav />
         <Announcement />
-        <Title>{cat}</Title>
+        <Title>{cat}'s</Title>
         <FilterContainer>
           <Filter>
             <FilterText>Filter the Products:</FilterText>
