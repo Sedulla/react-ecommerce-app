@@ -7,15 +7,16 @@ import { login } from '../redux/apiCalls';
 import { useDispatch, useSelector } from 'react-redux';
 
 const Container = styled.div`
-  width: 90vw;
-  height: 90vh;
+  width: 99vw;
+  height: 99vh;
   background: rgba(255, 255, 255, 0.5);
-  display: grid;
-  place-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const Wrapper = styled.div`
-  width: 23vw;
+  width: 51vw;
   padding: 20px;
   background-color: #fff;
   ${mobile({ width: ' 90vw' })}
@@ -36,10 +37,18 @@ const Input = styled.input`
   min-width: 40vw;
   margin: 10px 0;
   padding: 10px;
+  border: 1px solid #ddd;
+  :focus {
+    outline: none;
+  }
 `;
 
 const Button = styled.button`
-  width: 40vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 39px;
   border: none;
   padding: 15px 20px;
   background-color: #009000;
@@ -66,7 +75,7 @@ const ALink = styled.a`
   cursor: pointer;
 `;
 
-const ErrorMessage = styled.div`
+export const ErrorMessage = styled.div`
   color: red;
   font-size: 11px;
   margin-bottom: 9px;
@@ -84,7 +93,7 @@ export const LogIn = () => {
     },
   });
   const dispatch = useDispatch();
-  const { isFetching, error } = useSelector((state) => state.user);
+  const { isFetching } = useSelector((state) => state.user);
 
   const onSubmit = (data) => {
     const { username, password } = data;
@@ -103,7 +112,7 @@ export const LogIn = () => {
                 required: true,
               })}
               type="text"
-              placeholder="Username"
+              placeholder="admin"
             />
             {errors.username?.type === 'required' && (
               <div>Please fill the username field</div>
@@ -111,7 +120,7 @@ export const LogIn = () => {
             <Input
               {...register('password', { required: true, minLength: 5 })}
               type="password"
-              placeholder="Password"
+              placeholder="admin123"
             />
             {errors.password?.type === 'required' && (
               <div>Please fill the password field</div>
@@ -122,11 +131,10 @@ export const LogIn = () => {
             <Button type="submit" disabled={isFetching}>
               LOGIN
             </Button>
-            {error && <ErrorMessage>Something went wrong...</ErrorMessage>}
             <ALink>DO NOT YOU REMEMBER THE PASSWORD?</ALink>
             <ALink>
-              <Link className="link" to="/register">
-                REGISTER HERE
+              <Link className="link" to="/signup">
+                SIGN UP HERE
               </Link>
             </ALink>
           </Form>

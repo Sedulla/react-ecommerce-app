@@ -1,13 +1,12 @@
-import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
+import { signUp } from '../redux/apiCalls';
 import { mobile } from '../utils/responsive';
-import { LogIn } from './LogIn';
-
-const Alert = styled.div``;
 
 const Container = styled.div`
-  width: 100vw;
-  height: 100vh;
+  width: 99vw;
+  height: 99vh;
   background: rgba(255, 255, 255, 0.5);
   display: flex;
   align-items: center;
@@ -33,18 +32,26 @@ const Form = styled.form`
 
 const Input = styled.input`
   flex: 1;
-  min-width: 40vw;
-  margin: 20px 10px 0px 0px;
-  padding: 10px;
+  min-width: 39vw;
+  margin: 19px 9px 0px 0px;
+  padding: 9px;
+  border: 1px solid #ddd;
+  :focus {
+    outline: none;
+  }
 `;
 
-const Agreement = styled.span`
+const Agreement = styled.div`
   font-size: 12px;
-  margin: 20px 0px;
+  margin: 21px 0px;
 `;
 
 const Button = styled.button`
-  width: 40vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35vw;
+  height: 39px;
   border: none;
   padding: 15px 20px;
   background-color: #009000;
@@ -58,64 +65,72 @@ const Button = styled.button`
 `;
 
 export const SignUp = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      username: '',
+      email: '',
+      password: '',
+    },
+  });
+  const dispatch = useDispatch();
 
-  const [flag, setFlag] = useState(false);
-  const [login, setLogin] = useState(true);
+  function onSubmit(data) {
+    const { username, email, password } = data;
 
-  function handleFormSubmit(e) {
-    e.preventDefault();
-
-    if (!name || !email || !password) {
-      setFlag(true);
+    if (!data) {
     } else {
-      setFlag(false);
-      localStorage.setItem('SubmissionEmail', JSON.stringify(email));
-      localStorage.setItem('SubmissionPassword', JSON.stringify(password));
-      console.log('Saved in Local Storage');
-
-      setLogin(!login);
+      signUp(dispatch, { username, email, password });
     }
   }
 
   return (
     <>
-      {login ? (
-        <Container>
-          <Wrapper>
-            <Title>NEW ACCOUNT</Title>
-            <Form onSubmit={handleFormSubmit}>
-              <Input
-                type="text"
-                placeholder="name"
-                onChange={(e) => setName(e.target.value)}
-              ></Input>
-              <Input
-                type="email"
-                placeholder="email"
-                onChange={(e) => setEmail(e.target.value)}
-              ></Input>
-              <Input
-                type="password"
-                placeholder="password"
-                onChange={(e) => setPassword(e.target.value)}
-              ></Input>
-              <Agreement>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Voluptates quos dolores. <b>PRIVACY POLICY</b>
-              </Agreement>
-              {flag && (
-                <Alert severity="danger">Every Field is important!</Alert>
-              )}
-              <Button type="submit">REGISTER NOW</Button>
-            </Form>
-          </Wrapper>
-        </Container>
-      ) : (
-        <LogIn />
-      )}
+      <Container>
+        <Wrapper>
+          <Title>NEW ACCOUNT</Title>
+          <Form onSubmit={handleSubmit(onSubmit)}>
+            <Input
+              type="text"
+              placeholder="Username"
+              {...register('username', {
+                required: true,
+              })}
+            />
+            {errors.username?.type === 'required' && (
+              <div>Please fill the username field</div>
+            )}
+            <Input
+              type="email"
+              placeholder="Email"
+              {...register('email', {
+                required: true,
+              })}
+            />
+            {errors.email?.type === 'required' && (
+              <div>Please fill the username field</div>
+            )}
+            <Input
+              type="password"
+              placeholder="Password"
+              {...register('password', { required: true, minLength: 5 })}
+            />
+            {errors.password?.type === 'required' && (
+              <div>Please fill the password field</div>
+            )}
+            {errors.password?.type === 'minLength' && (
+              <div>Password must be at least 5 characters</div>
+            )}
+            <Agreement>
+              Some text here. <b>PRIVACY AND POLICY</b>
+            </Agreement>
+            <Button type="submit">Sign Up Now</Button>
+          </Form>
+        </Wrapper>
+      </Container>
     </>
   );
 };

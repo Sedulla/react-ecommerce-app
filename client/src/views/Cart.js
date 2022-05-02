@@ -180,7 +180,7 @@ export const Cart = () => {
         <Wrapper>
           <Title>YOUR BAG</Title>
           <Top>
-            <Link className="link" to="/products/men1">
+            <Link className="link" to="/products/men">
               <TopButton>CONTINUE YOUR SHOPPING</TopButton>
             </Link>
             <TopTexts>
