@@ -12,8 +12,7 @@ const cartSlice = createSlice({
       const { quantity, price } = action.payload;
       state.quantity += quantity;
       state.products.push(action.payload);
-      state.total += price * quantity;
-      console.log(quantity);
+      state.total = price * quantity;
 
       // const productIndex = state.products.findIndex((p) => p.id === product.id);
       // if (productIndex === -1) {
@@ -43,6 +42,6 @@ const cartSlice = createSlice({
   },
 });
 
-export const { addProduct, removeProduct,clearCart } = cartSlice.actions;
+export const { addProduct, removeProduct, clearCart } = cartSlice.actions;
 
 export default cartSlice.reducer;

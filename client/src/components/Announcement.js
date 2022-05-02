@@ -12,5 +12,5 @@ const Container = styled.div`
 `;
 
 export const Announcement = () => {
-  return <Container>FREE SHIPPING ON ORDERS OVER $50</Container>;
+  return <Container>FREE SHIPPING ON ORDERS OVER $150</Container>;
 };

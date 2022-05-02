@@ -170,6 +170,7 @@ const SummaryButton = styled.button`
 
 export const Cart = () => {
   const cart = useSelector((state) => state.cart);
+
   let shippingCost = 15.95;
 
   return (
@@ -214,9 +215,7 @@ export const Cart = () => {
                           <ProductAmount>{product.quantity}</ProductAmount>
                           <RemoveIcon />
                         </ProductAmountContainer>
-                        <ProductPrice>
-                          $ {product.price * product.quantity}
-                        </ProductPrice>
+                        <ProductPrice>${cart.total}</ProductPrice>
                       </PriceDetail>
                     </Product>
                     <Hr />
@@ -233,14 +232,14 @@ export const Cart = () => {
               <SummaryItem>
                 <SummaryItemTitle>Shipping</SummaryItemTitle>
                 <SummaryItemPrice>
-                  {/* Free Shipping on Order Over $50 for discount announcement */}
-                  {cart.total > 50 ? 'Free' : `${shippingCost}`}
+                  {/* Free Shipping on Order Over $150 for discount announcement */}
+                  {cart.total > 150 ? 'Free' : `${shippingCost}`}
                 </SummaryItemPrice>
               </SummaryItem>
               <SummaryItem type="total">
                 <SummaryItemTitle>Total</SummaryItemTitle>
                 <SummaryItemPrice>
-                  {cart.total + `${cart.products[0] ? `${shippingCost}` : ''}`}
+                  {(cart.total + shippingCost).toFixed(2)}
                 </SummaryItemPrice>
               </SummaryItem>
               <SummaryButton>CHECKOUT NOW</SummaryButton>
