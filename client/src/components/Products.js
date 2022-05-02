@@ -3,6 +3,7 @@ import { Product } from './Product';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { mobile } from '../utils/responsive';
+import { nanoid } from '@reduxjs/toolkit';
 
 const Container = styled.div`
   padding: 15px;
@@ -68,11 +69,11 @@ export const Products = ({ cat, filters, sort }) => {
     <Container>
       {cat
         ? filteredProducts.map((product) => (
-            <Product key={product.id} product={product} />
+            <Product key={nanoid()} product={product} />
           ))
         : products
             .slice(0, 3)
-            .map((product) => <Product key={product.id} product={product} />)}
+            .map((product) => <Product key={nanoid()} product={product} />)}
     </Container>
   );
 };

@@ -117,7 +117,7 @@ export const Footer = () => {
         <List>
           {footerMenu.map((item) => (
             <ListItem key={item.title}>
-              <Link class="link" to="">
+              <Link className="link" to="">
                 {item.title}
               </Link>
             </ListItem>

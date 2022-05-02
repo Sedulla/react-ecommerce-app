@@ -9,8 +9,8 @@ import { slideItems } from '../utils/data';
 import { mobile } from '../utils/responsive';
 
 const Container = styled.div`
-  width: 100vw;
-  height: 100vh;
+  width: 99vw;
+  height: 91vh;
   display: flex;
   position: relative;
   overflow: hidden;
@@ -37,7 +37,7 @@ const Arrow = styled.div`
 `;
 
 const Wrapper = styled.div`
-  height: 100vh;
+  height: 90vh;
   display: flex;
   transition: all 1.5s ease;
   transform: translateX(${(props) => props.slideIndex * -100}vw);
@@ -57,7 +57,8 @@ const ImgContainer = styled.div`
 `;
 
 const Image = styled.img`
-  height: 80vh;
+  height: 79vh;
+  margin-inline: 99px;
 `;
 
 const InfoContainer = styled.div`

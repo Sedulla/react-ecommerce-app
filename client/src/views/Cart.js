@@ -6,6 +6,7 @@ import { Nav } from '../components/Nav';
 import { mobile } from '../utils/responsive';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { nanoid } from '@reduxjs/toolkit';
 
 const Container = styled.div``;
 
@@ -194,7 +195,7 @@ export const Cart = () => {
               {cart.products?.map((product) => {
                 return (
                   <>
-                    <Product>
+                    <Product key={nanoid()}>
                       <ProductDetails>
                         <ProductImage src={product.img} />
                         <Details>
