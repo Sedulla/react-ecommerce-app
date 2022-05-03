@@ -11,6 +11,7 @@ import { mobile } from '../utils/responsive';
 import { useDispatch } from 'react-redux';
 import { addProduct } from '../redux/cartSlice';
 import { Announcement } from '../components/Announcement';
+import { apiBaseUrl } from '../utils/config';
 // import * as palette from '../utils/palette';
 
 const Container = styled.div``;
@@ -150,7 +151,7 @@ export const SingleProduct = () => {
     const getSingleProduct = async () => {
       try {
         const response = await axios.get(
-          `${process.env.REACT_APP_API_URL}/products/find/${productId}`
+          `${apiBaseUrl}/products/find/${productId}`
         );
         console.log(response);
         setProduct(response.data);

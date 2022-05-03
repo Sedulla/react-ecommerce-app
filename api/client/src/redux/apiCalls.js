@@ -7,11 +7,12 @@ import {
   signUpStart,
 } from './userSlice';
 import axios from 'axios';
+import { apiBaseUrl } from '../utils/config';
 
 export const login = async (dispatch, user) => {
   dispatch(loginStart());
   try {
-    const res = await axios.post('http://localhost:5000/api/auth/login', user);
+    const res = await axios.post(`${apiBaseUrl}/auth/login`, user);
     dispatch(loginSuccess(res.data));
   } catch (err) {
     dispatch(loginFailure());
@@ -21,7 +22,7 @@ export const login = async (dispatch, user) => {
 export const signUp = async (dispatch, user) => {
   dispatch(signUpStart());
   try {
-    const res = await axios.post('http://localhost:5000/api/auth/signup', user);
+    const res = await axios.post(`${apiBaseUrl}/auth/signup`, user);
     dispatch(signUpSuccess(res.data));
   } catch (err) {
     dispatch(signUpFailure());

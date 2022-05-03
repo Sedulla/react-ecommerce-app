@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { mobile } from '../utils/responsive';
 import { nanoid } from '@reduxjs/toolkit';
+import { apiBaseUrl } from '../utils/config';
 
 const Container = styled.div`
   padding: 15px;
@@ -23,8 +24,8 @@ export const Products = ({ cat, filters, sort }) => {
       try {
         const response = await axios.get(
           cat
-            ? `http://localhost:5000/api/products?category=${cat}`
-            : 'http://localhost:5000/api/products'
+            ? `${apiBaseUrl}/products?category=${cat}`
+            : `${apiBaseUrl}/products`
         );
         setProducts(response.data);
       } catch (err) {
