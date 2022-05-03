@@ -1,4 +1,4 @@
-export const footerMenu = [
+export const footerMenuInfo = [
   {
     title: 'About us',
     link: '/about-us',

@@ -46,7 +46,7 @@ export const Products = ({ cat, filters, sort }) => {
       );
   }, [cat, filters, products]);
 
-  // Sort products by the sort
+  // Sort the products
   useEffect(() => {
     if (sort === 'newest') {
       setFilteredProducts((prev) =>

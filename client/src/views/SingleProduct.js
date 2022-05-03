@@ -11,6 +11,7 @@ import { mobile } from '../utils/responsive';
 import { useDispatch } from 'react-redux';
 import { addProduct } from '../redux/cartSlice';
 import { Announcement } from '../components/Announcement';
+// import * as palette from '../utils/palette';
 
 const Container = styled.div``;
 

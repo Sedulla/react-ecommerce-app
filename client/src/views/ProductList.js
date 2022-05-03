@@ -67,10 +67,12 @@ export const ProductList = () => {
             <Select name="color" onChange={handleFilters}>
               <Option disabled>Color</Option>
               <Option>White</Option>
+              <Option>Almond</Option>
               <Option>Black</Option>
-              <Option>Blue</Option>
-              <Option>Green</Option>
               <Option>Brown</Option>
+              <Option>Clay</Option>
+              <Option>Iron</Option>
+              <Option>Sandstorm</Option>
             </Select>
             <Select name="size" onChange={handleFilters}>
               <Option disabled>Size</Option>
