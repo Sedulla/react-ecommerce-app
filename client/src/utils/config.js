@@ -1,1 +1,1 @@
-export const apiBaseUrl = 'https://react-ecommerce-app3.herokuapp.com/api/';
+export const apiBaseUrl = 'https://react-ecommerce-app3.herokuapp.com/api';
