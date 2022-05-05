@@ -9,6 +9,7 @@ const cartRoute = require('./routes/cart');
 const orderRoute = require('./routes/order');
 const stripeRoute = require('./routes/stripe');
 const cors = require('cors');
+const path = require('path');
 
 dotenv.config();
 
@@ -35,9 +36,5 @@ app.get('*', (req, res) => {
 });
 
 app.listen(process.env.PORT || 5000, () => {
-  console.log(
-    'Backend server is running!',
-    this.address().port,
-    app.settings.env
-  );
+  console.log('Backend server is running!', app.settings.env);
 });
