@@ -8,7 +8,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "dev": "node index.js",
+    "start": "serve -s build",
     "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "keywords": [],
@@ -22,6 +23,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.0.5",
     "nodemon": "^2.0.12",
+    "serve": "^13.0.2",
     "stripe": "^8.174.0"
   }
 }
