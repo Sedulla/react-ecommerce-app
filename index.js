@@ -35,5 +35,9 @@ app.get('*', (req, res) => {
 });
 
 app.listen(process.env.PORT || 5000, () => {
-  console.log('Backend server is running!');
+  console.log(
+    'Backend server is running!',
+    this.address().port,
+    app.settings.env
+  );
 });
