@@ -142,8 +142,8 @@ const SummaryItem = styled.div`
   margin: 30px 0;
   display: flex;
   justify-content: space-between;
-  font-weight: ${(props) => props.type === 'total' && '500'};
-  font-size: ${(props) => (props.type === 'total' ? '3ch' : '1.7ch')};
+  font-weight: ${(props) => props.type === 'cart.total' && '500'};
+  font-size: ${(props) => (props.type === 'cart.total' ? '3ch' : '1.7ch')};
 `;
 
 const SummaryItemTitle = styled.span``;
@@ -170,8 +170,6 @@ const SummaryButton = styled.button`
 
 export const Cart = () => {
   const cart = useSelector((state) => state.cart);
-
-  let shippingCost = 15.95;
 
   return (
     <>
@@ -231,15 +229,12 @@ export const Cart = () => {
               </SummaryItem>
               <SummaryItem>
                 <SummaryItemTitle>Shipping</SummaryItemTitle>
-                <SummaryItemPrice>
-                  {/* Free Shipping on Order Over $150 for discount announcement */}
-                  {cart.total > 150 ? 'Free' : `${shippingCost}`}
-                </SummaryItemPrice>
+                <SummaryItemPrice>{cart.shippingCost}</SummaryItemPrice>
               </SummaryItem>
-              <SummaryItem type="total">
+              <SummaryItem type="cart.total">
                 <SummaryItemTitle>Total</SummaryItemTitle>
                 <SummaryItemPrice>
-                  {(cart.total + shippingCost).toFixed(2)}
+                  {cart.total + cart.shippingCost}
                 </SummaryItemPrice>
               </SummaryItem>
               <SummaryButton>CHECKOUT NOW</SummaryButton>

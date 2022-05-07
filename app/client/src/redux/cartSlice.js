@@ -6,6 +6,7 @@ const cartSlice = createSlice({
     products: [],
     quantity: 0,
     total: 0,
+    shippingCost: 0,
   },
   reducers: {
     addProduct: (state, action) => {
@@ -13,6 +14,8 @@ const cartSlice = createSlice({
       state.quantity += quantity;
       state.products.push(action.payload);
       state.total = price * quantity;
+      // Free shipping on order over $150
+      state.shippingCost = state.total > 150 ? 0 : 15.95;
 
       // const productIndex = state.products.findIndex((p) => p.id === product.id);
       // if (productIndex === -1) {
@@ -38,6 +41,7 @@ const cartSlice = createSlice({
       state.products = [];
       state.quantity = 0;
       state.total = 0;
+      state.shippingCost = 0;
     },
   },
 });
