@@ -105,7 +105,7 @@ const Right = styled.div`
 `;
 
 const MenuItem = styled.div`
-  font-size: 14px;
+  font-size: 15px;
   cursor: pointer;
   margin-left: 25px;
 
@@ -124,7 +124,7 @@ export const Nav = () => {
   const handleLogOut = () => {
     dispatch(logout());
     dispatch(clearCart());
-    
+
     navigate('/');
   };
 
@@ -153,13 +153,18 @@ export const Nav = () => {
           ) : (
             <>
               <MenuItem>
+                <Link className="link" to="/products/men">
+                  Shop
+                </Link>
+              </MenuItem>
+              <MenuItem>
                 <Link className="link" to="/signup">
-                  SIGN UP
+                  Sign Up
                 </Link>
               </MenuItem>
               <MenuItem>
                 <Link className="link" to="/login">
-                  LOG IN
+                  Log In
                 </Link>
               </MenuItem>
             </>
