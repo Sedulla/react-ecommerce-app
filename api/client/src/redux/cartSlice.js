@@ -13,7 +13,13 @@ const cartSlice = createSlice({
       const { quantity, price } = action.payload;
       state.quantity += quantity;
       state.products.push(action.payload);
-      state.total = price * quantity;
+
+      // fixes javascript floating point error
+      const multiplyDecimal = (a, b) => {
+        return parseFloat((a * b).toFixed(13));
+      };
+      
+      state.total = multiplyDecimal(price, quantity);
       // Free shipping on order over $150
       state.shippingCost = state.total > 150 ? 0 : 15.95;
 
