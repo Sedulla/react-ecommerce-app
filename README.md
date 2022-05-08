@@ -2,4 +2,4 @@
 
 ### Preview
 
-![react-ecommmerce-app](./docs/images/react-ecommerce-app.gif)
+![react-eCommmerce-app](./docs/images/react-ecommerce-app.gif)
