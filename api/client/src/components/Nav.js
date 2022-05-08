@@ -148,15 +148,15 @@ export const Nav = () => {
           </Logo>
         </Center>
         <Right>
+          <MenuItem>
+            <Link className="link" to="/products/men">
+              Shop
+            </Link>
+          </MenuItem>
           {user ? (
-            <MenuItem onClick={handleLogOut}>LOG OUT</MenuItem>
+            <MenuItem onClick={handleLogOut}>Log Out</MenuItem>
           ) : (
             <>
-              <MenuItem>
-                <Link className="link" to="/products/men">
-                  Shop
-                </Link>
-              </MenuItem>
               <MenuItem>
                 <Link className="link" to="/signup">
                   Sign Up
