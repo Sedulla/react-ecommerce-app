@@ -171,6 +171,11 @@ const SummaryButton = styled.button`
 export const Cart = () => {
   const cart = useSelector((state) => state.cart);
 
+  // fixes javascript sum operation floating point error
+  const sumDecimal = (a, b) => {
+    return parseFloat((a + b).toFixed(13));
+  };
+
   return (
     <>
       <Container>
@@ -234,7 +239,7 @@ export const Cart = () => {
               <SummaryItem type="cart.total">
                 <SummaryItemTitle>Total</SummaryItemTitle>
                 <SummaryItemPrice>
-                  {cart.total + cart.shippingCost}
+                  {sumDecimal(cart.total, cart.shippingCost)}
                 </SummaryItemPrice>
               </SummaryItem>
               <SummaryButton>CHECKOUT NOW</SummaryButton>
